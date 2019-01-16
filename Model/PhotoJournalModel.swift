@@ -9,9 +9,9 @@
 import Foundation
 final class PhotoJournalModel {
    private static let filename = "PhotoJournalList.plist"
-    
+  private static var photoJournal = [PhotoJournal]()
     private init() {}
-    static func savePhotoJournal(photoJournal: PhotoJournal) {
+    static func savePhotoJournal() {
         let path = DataPresistenceManager.filepathToDocumentsDirectory(filename: filename)
         do {
             let data = try PropertyListEncoder().encode(photoJournal)
@@ -20,14 +20,14 @@ final class PhotoJournalModel {
             print("Property list encoding error: \(error)")
         }
     }
-    static func getPhotoJournal() -> PhotoJournal? {
+    static func getPhotoJournal() -> [PhotoJournal] {
         let path = DataPresistenceManager.filepathToDocumentsDirectory(filename: filename).path
-        var photoJournal: PhotoJournal?
+       
         
         if FileManager.default.fileExists(atPath: path) {
             if let data = try FileManager.default.contents(atPath: path) {
                 do {
-                    photoJournal = try PropertyListDecoder().decode(PhotoJournal.self, from: data)
+                    photoJournal = try PropertyListDecoder().decode([PhotoJournal].self, from: data)
                 } catch {
                     print("Property list decoding error: \(error)")
                 }
@@ -38,5 +38,19 @@ final class PhotoJournalModel {
             print("\(filename) does not exist")
         }
         return photoJournal
+    }
+    static func addPhoto(photo: PhotoJournal) {
+        photoJournal.append(photo)
+        savePhotoJournal()
+    }
+    static func deletPost(photo: PhotoJournal, index: Int) {
+        photoJournal.remove(at: index)
+        savePhotoJournal()
+        
+    }
+    static func editItem(photo: PhotoJournal, atIndex index: Int) {
+        photoJournal.remove(at: index)
+        photoJournal.insert(photo, at: index)
+        savePhotoJournal()
     }
 }

@@ -16,12 +16,13 @@ class SecondPhotoJournalViewController: UIViewController {
     
     private var titlePlaceHolder = "Title"
     private var imagePickerController: UIImagePickerController!
+    var imageSelected: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitleText()
         setupImagePickerController()
-        updateUI()
+        //updateUI()
         imageViewToAdd.contentMode = .scaleToFill
     }
     private func setupTitleText() {
@@ -29,17 +30,18 @@ class SecondPhotoJournalViewController: UIViewController {
         titleTextView.text = titlePlaceHolder
         titleTextView.textColor = .lightGray
     }
-    private func updateUI() {
-        if let photoJournal = PhotoJournalModel.getPhotoJournal() {
-            let image = UIImage(data: photoJournal.imageData)
-            imageViewToAdd.image = image
-        } else {
-            print("Image does not exist")
-        }
-    }
+//    private func updateUI() {
+//        if let photoJournal = PhotoJournalModel.getPhotoJournal() {
+//            let image = UIImage(data: photoJournal.imageData)
+//            imageViewToAdd.image = image
+//        } else {
+//            print("Image does not exist")
+//        }
+//    }
     private func setupImagePickerController() {
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
+        
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
             cameraButton.isHidden = false
         }
@@ -53,8 +55,8 @@ class SecondPhotoJournalViewController: UIViewController {
     }
     
     @IBAction func saveButton(_ sender: UIButton) {
-        guard let textView = titleTextView.text else {
-            fatalError("Title is nil")
+        guard let titleText = titleTextView.text else {
+            fatalError("Title is nil")}
             let date = Date()
             let isoDateFormetter = ISO8601DateFormatter()
             isoDateFormetter.formatOptions = [.withFullDate,
@@ -62,11 +64,18 @@ class SecondPhotoJournalViewController: UIViewController {
                                                     .withInternetDateTime,
                                                     .withTimeZone,
                                                     .withDashSeparatorInDate]
-            let timestamp = isoDateFormetter.string(from: date)
+            let timetamp = isoDateFormetter.string(from: date)
+            if let imageData = imageSelected.jpegData(compressionQuality: 0.5){
+                let photo = PhotoJournal.init(imageData: imageData, createdAt: timetamp, title: titleText)
+                PhotoJournalModel.addPhoto(photo: photo)
+                dismiss(animated: true, completion: nil)
+            }
+           
         }
-    }
+    
     
     @IBAction func cameraButtonTouched(_ sender: UIBarButtonItem) {
+        dismiss(animated: false, completion: nil)
     }
     @IBAction func photoLibraryTouched(_ sender: UIBarButtonItem) {
         imagePickerController.sourceType = .photoLibrary
@@ -89,7 +98,7 @@ extension SecondPhotoJournalViewController: UIImagePickerControllerDelegate,UINa
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageViewToAdd.image = image
-            
+            imageSelected = image
         } else {
             print("Image ia nil")
         }

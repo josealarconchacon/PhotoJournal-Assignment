@@ -20,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sO1-Gy-CEd">
                                 <rect key="frame" x="5" y="28" width="369" height="598"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ccG-UU-stL">
                                     <size key="itemSize" width="278" height="453"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="WLs-AE-Gk0" customClass="PhotoJournalCell" customModule="PhotoJournal_Assignment" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoJournalCell" id="WLs-AE-Gk0" customClass="PhotoJournalCell" customModule="PhotoJournal_Assignment" customModuleProvider="target">
                                         <rect key="frame" x="45.5" y="0.0" width="278" height="453"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -57,15 +57,16 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                                     <state key="normal" title="...">
-                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="titleColor" red="0.25490197539999998" green="0.56078433989999998" blue="0.87843137979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="buttonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kse-gB-VBM"/>
+                                                        <action selector="editButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vkw-XF-Pdb"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.59438717220000004" green="0.88107638889999995" blue="0.87868731209999995" alpha="0.19678403255205482" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.53371147259999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="rnn-9Z-tP0" firstAttribute="top" secondItem="Vh7-H7-kPn" secondAttribute="bottom" constant="20" id="89n-b7-nNY"/>
                                             <constraint firstItem="Vh7-H7-kPn" firstAttribute="leading" secondItem="WLs-AE-Gk0" secondAttribute="leadingMargin" id="A98-IG-rcS"/>
@@ -83,9 +84,9 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="button" destination="rnn-9Z-tP0" id="OV9-Id-Fzh"/>
-                                            <outlet property="imageView" destination="NOF-w3-mgm" id="4H3-65-hZH"/>
+                                            <outlet property="imageView" destination="NOF-w3-mgm" id="kHV-aV-qQj"/>
                                             <outlet property="titleActualTime" destination="Vh7-H7-kPn" id="Otm-ZO-Xrf"/>
-                                            <outlet property="titleName" destination="gpw-T3-8KY" id="HC3-ua-a1N"/>
+                                            <outlet property="titleName" destination="gpw-T3-8KY" id="L7e-pk-0Df"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -101,6 +102,7 @@
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bxL-s4-TVB"/>
                                 </items>
+                                <color key="barTintColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.76040774828767121" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
