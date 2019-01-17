@@ -13,14 +13,14 @@
         <!--Photo Journal View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="PhotoJournalViewController" customModule="PhotoJournal_Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="identifire" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="PhotoJournalViewController" customModule="PhotoJournal_Assignment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sO1-Gy-CEd">
                                 <rect key="frame" x="5" y="28" width="369" height="598"/>
-                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ccG-UU-stL">
                                     <size key="itemSize" width="278" height="453"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -66,7 +66,7 @@
                                                 </button>
                                             </subviews>
                                         </view>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.53371147259999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="1" alpha="0.40935359589041098" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="rnn-9Z-tP0" firstAttribute="top" secondItem="Vh7-H7-kPn" secondAttribute="bottom" constant="20" id="89n-b7-nNY"/>
                                             <constraint firstItem="Vh7-H7-kPn" firstAttribute="leading" secondItem="WLs-AE-Gk0" secondAttribute="leadingMargin" id="A98-IG-rcS"/>
@@ -129,7 +129,7 @@
         <!--Title-->
         <scene sceneID="nHm-uP-KMX">
             <objects>
-                <viewController id="c9r-3F-4wN" customClass="SecondPhotoJournalViewController" customModule="PhotoJournal_Assignment" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="edit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="c9r-3F-4wN" customClass="SecondPhotoJournalViewController" customModule="PhotoJournal_Assignment" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cad-5Y-nmG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,53 +156,64 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="2WH-pf-8zP">
                                 <rect key="frame" x="0.0" y="238" width="375" height="386"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m4N-Ti-kBS">
-                                <rect key="frame" x="329" y="16" width="34" height="30"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButton:" destination="c9r-3F-4wN" eventType="touchUpInside" id="ztc-a6-A4T"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anu-Rg-9c4">
-                                <rect key="frame" x="4" y="14" width="48" height="30"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="cancelButton:" destination="c9r-3F-4wN" eventType="touchUpInside" id="qeC-ks-wTh"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rps-1f-HOD">
-                                <rect key="frame" x="9" y="50" width="357" height="150"/>
+                                <rect key="frame" x="9" y="78" width="357" height="122"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2If-Hc-1DZ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="TPK-hr-wTv">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="AcT-M7-Eid">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="anu-Rg-9c4">
+                                                <rect key="frame" x="16" y="7" width="48" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelButton:" destination="c9r-3F-4wN" eventType="touchUpInside" id="qeC-ks-wTh"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="jTu-sT-Q6Q">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="m4N-Ti-kBS">
+                                                <rect key="frame" x="325" y="7" width="34" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveButton:" destination="c9r-3F-4wN" eventType="touchUpInside" id="ztc-a6-A4T"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rps-1f-HOD" firstAttribute="leading" secondItem="u2M-kD-ask" secondAttribute="leading" constant="9" id="1Gi-If-3wt"/>
+                            <constraint firstItem="2If-Hc-1DZ" firstAttribute="top" secondItem="cad-5Y-nmG" secondAttribute="top" constant="28" id="9Uo-1k-Fi5"/>
                             <constraint firstItem="2WH-pf-8zP" firstAttribute="centerX" secondItem="u2M-kD-ask" secondAttribute="centerX" id="9Wg-HY-71G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bFA-4V-whn" secondAttribute="trailing" constant="-18" id="Axa-eH-Tnf"/>
-                            <constraint firstItem="m4N-Ti-kBS" firstAttribute="top" secondItem="cad-5Y-nmG" secondAttribute="topMargin" constant="-4" id="BBv-KY-x3r"/>
                             <constraint firstItem="bFA-4V-whn" firstAttribute="bottom" secondItem="u2M-kD-ask" secondAttribute="bottom" id="BWA-pF-cNi"/>
-                            <constraint firstItem="rps-1f-HOD" firstAttribute="top" secondItem="anu-Rg-9c4" secondAttribute="bottom" constant="6" id="F9E-cJ-bOz"/>
-                            <constraint firstItem="rps-1f-HOD" firstAttribute="top" secondItem="m4N-Ti-kBS" secondAttribute="bottom" constant="4" id="FBv-U1-e5B"/>
                             <constraint firstItem="2WH-pf-8zP" firstAttribute="top" secondItem="rps-1f-HOD" secondAttribute="bottom" constant="38" id="I59-C7-DR0"/>
                             <constraint firstItem="2WH-pf-8zP" firstAttribute="centerY" secondItem="u2M-kD-ask" secondAttribute="centerY" constant="87.5" id="K4M-gq-14E"/>
-                            <constraint firstItem="u2M-kD-ask" firstAttribute="trailing" secondItem="m4N-Ti-kBS" secondAttribute="trailing" constant="12" id="KY2-uq-7Sk"/>
                             <constraint firstItem="rps-1f-HOD" firstAttribute="centerX" secondItem="2WH-pf-8zP" secondAttribute="centerX" id="N9c-0H-6CP"/>
-                            <constraint firstItem="m4N-Ti-kBS" firstAttribute="leading" secondItem="anu-Rg-9c4" secondAttribute="trailing" constant="277" id="dqd-pJ-9hQ"/>
+                            <constraint firstItem="rps-1f-HOD" firstAttribute="top" secondItem="u2M-kD-ask" secondAttribute="top" constant="58" id="OlY-6r-bWD"/>
                             <constraint firstItem="2WH-pf-8zP" firstAttribute="width" secondItem="cad-5Y-nmG" secondAttribute="width" id="m5p-k1-S6O"/>
                             <constraint firstItem="bFA-4V-whn" firstAttribute="leading" secondItem="u2M-kD-ask" secondAttribute="leading" constant="2" id="sny-h3-iuh"/>
+                            <constraint firstItem="2If-Hc-1DZ" firstAttribute="trailing" secondItem="u2M-kD-ask" secondAttribute="trailing" id="tC1-KO-sdK"/>
                             <constraint firstItem="2WH-pf-8zP" firstAttribute="height" secondItem="cad-5Y-nmG" secondAttribute="height" multiplier="0.45" constant="85.849999999999966" id="vDi-Bg-r5g"/>
-                            <constraint firstItem="anu-Rg-9c4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u2M-kD-ask" secondAttribute="leading" id="xb6-TB-F4f"/>
+                            <constraint firstItem="2If-Hc-1DZ" firstAttribute="leading" secondItem="u2M-kD-ask" secondAttribute="leading" id="vfs-lk-0PA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="u2M-kD-ask"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="LWe-zH-Ey6"/>
+                    <navigationItem key="navigationItem" title="Title" id="R9v-N9-TKi"/>
                     <connections>
                         <outlet property="cameraButton" destination="bFA-4V-whn" id="KmO-U5-Xh5"/>
                         <outlet property="imageViewToAdd" destination="2WH-pf-8zP" id="ZNz-8w-hYB"/>

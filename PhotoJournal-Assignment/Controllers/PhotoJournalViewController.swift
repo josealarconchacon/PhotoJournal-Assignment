@@ -13,7 +13,7 @@ class PhotoJournalViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
   
-   // var  index: Int!
+   
     var photoJournal = PhotoJournalModel.getPhotoJournal()
     private var imagePickerViewController: UIImagePickerController!
     
@@ -21,10 +21,13 @@ class PhotoJournalViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
-        print(DataPresistenceManager.documentsDirectory())
         print(photoJournal)
         reload()
+        edit()
+        delete()
+        print(DataPresistenceManager.documentsDirectory())
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         collectionView.reloadData()
         photoJournal = PhotoJournalModel.getPhotoJournal()
@@ -38,30 +41,52 @@ class PhotoJournalViewController: UIViewController {
         let index = sender.tag
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .default) { (UIAlertAction) in
-          print("Delete")
+            print("Delete")
             PhotoJournalModel.deletPost(photo: self.photoJournal[index], index: index)
             self.collectionView.reloadData()
             self.reload()
         }
-        optionMenu.addAction(deleteAction)
+            optionMenu.addAction(deleteAction)
         let editAction = UIAlertAction(title: "Edit", style: .default) { (UIAlertAction) in
+            PhotoJournalModel.editItem(photo: self.photoJournal[index], Index: index)
             print("Edit")
-            PhotoJournalModel.editItem(photo: self.photoJournal[index], atIndex: index)
+            self.collectionView.reloadData()
+            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+            guard let vc = storyboard.instantiateViewController(withIdentifier: "edit") as? SecondPhotoJournalViewController else {return}
+            guard let image = UIImage(data: self.photoJournal[index].imageData) else {return}
+            let title = self.photoJournal[index].title
+            vc.imageSelected = image
+            vc.labelToSet = title
+            self.present(vc, animated: true, completion: nil)
+            self.edit()
             self.reload()
+            self.delete()
+            print(title)
         }
-        optionMenu.addAction(editAction)
+     
+            optionMenu.addAction(editAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        optionMenu.addAction(cancelAction)
-        self.present(optionMenu, animated: true, completion: nil)
+            optionMenu.addAction(cancelAction)
+            self.present(optionMenu, animated: true, completion: nil)
+    }
+    func delete() {
+        photoJournal = PhotoJournalModel.getPhotoJournal()
+        collectionView.reloadData()
     }
     func reload() {
         photoJournal = PhotoJournalModel.getPhotoJournal()
         collectionView.reloadData()
     }
-    
     @IBAction func editButtonTouched(_ sender: UIButton) {
-    
+        collectionView.reloadData()
+//        edit()
     }
+    func edit() {
+        photoJournal = PhotoJournalModel.getPhotoJournal()
+        collectionView.reloadData()
+        //delete()
+    }
+   
 }
 extension PhotoJournalViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

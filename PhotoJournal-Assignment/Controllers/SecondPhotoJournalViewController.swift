@@ -17,27 +17,26 @@ class SecondPhotoJournalViewController: UIViewController {
     private var titlePlaceHolder = "Title"
     private var imagePickerController: UIImagePickerController!
     var imageSelected: UIImage!
+    var labelToSet = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitleText()
         setupImagePickerController()
-        //updateUI()
         imageViewToAdd.contentMode = .scaleToFill
+        imageViewToAdd.image = imageSelected
+        titleTextView.text = labelToSet
+        titleTextView.textColor = .black
+    
     }
+    
     private func setupTitleText() {
         titleTextView.delegate = self
         titleTextView.text = titlePlaceHolder
         titleTextView.textColor = .lightGray
     }
-//    private func updateUI() {
-//        if let photoJournal = PhotoJournalModel.getPhotoJournal() {
-//            let image = UIImage(data: photoJournal.imageData)
-//            imageViewToAdd.image = image
-//        } else {
-//            print("Image does not exist")
-//        }
-//    }
+
     private func setupImagePickerController() {
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
