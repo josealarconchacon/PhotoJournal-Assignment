@@ -12,13 +12,13 @@ class SecondPhotoJournalViewController: UIViewController {
     @IBOutlet weak var titleTextView: UITextView!
     @IBOutlet weak var imageViewToAdd: UIImageView!
     @IBOutlet weak var cameraButton: UIToolbar!
-    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     private var titlePlaceHolder = "Title"
     private var imagePickerController: UIImagePickerController!
     var imageSelected: UIImage!
     var labelToSet = ""
-    
+    var index: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +28,16 @@ class SecondPhotoJournalViewController: UIViewController {
         imageViewToAdd.image = imageSelected
         titleTextView.text = labelToSet
         titleTextView.textColor = .black
-    
     }
-    
+   
     private func setupTitleText() {
         titleTextView.delegate = self
         titleTextView.text = titlePlaceHolder
         titleTextView.textColor = .lightGray
     }
-
     private func setupImagePickerController() {
         imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
-        
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
             cameraButton.isHidden = false
         }
@@ -48,31 +45,29 @@ class SecondPhotoJournalViewController: UIViewController {
     private func showImagePickerController() {
         present(imagePickerController,animated: true,completion:  nil)
     }
-    
     @IBAction func cancelButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
     @IBAction func saveButton(_ sender: UIButton) {
+        if let hi = index {
+            PhotoJournalModel.deletPost(index: hi)
+        }
         guard let titleText = titleTextView.text else {
             fatalError("Title is nil")}
             let date = Date()
             let isoDateFormetter = ISO8601DateFormatter()
             isoDateFormetter.formatOptions = [.withFullDate,
-                                                    .withFullTime,
-                                                    .withInternetDateTime,
-                                                    .withTimeZone,
-                                                    .withDashSeparatorInDate]
+                                                        .withFullTime,
+                                                        .withInternetDateTime,
+                                                        .withTimeZone,
+                                                        .withDashSeparatorInDate]
             let timetamp = isoDateFormetter.string(from: date)
             if let imageData = imageSelected.jpegData(compressionQuality: 0.5){
                 let photo = PhotoJournal.init(imageData: imageData, createdAt: timetamp, title: titleText)
                 PhotoJournalModel.addPhoto(photo: photo)
-                dismiss(animated: true, completion: nil)
             }
-           
-        }
-    
-    
+            dismiss(animated: true, completion: nil)
+    }
     @IBAction func cameraButtonTouched(_ sender: UIBarButtonItem) {
         dismiss(animated: false, completion: nil)
     }
@@ -80,8 +75,8 @@ class SecondPhotoJournalViewController: UIViewController {
         imagePickerController.sourceType = .photoLibrary
         showImagePickerController()
     }
-    
 }
+
 extension SecondPhotoJournalViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if titleTextView.text == titlePlaceHolder {

@@ -20,7 +20,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sO1-Gy-CEd">
                                 <rect key="frame" x="5" y="28" width="369" height="598"/>
-                                <color key="backgroundColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ccG-UU-stL">
                                     <size key="itemSize" width="278" height="453"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -51,13 +51,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnn-9Z-tP0">
-                                                    <rect key="frame" x="88" y="391.5" width="93" height="22"/>
+                                                    <rect key="frame" x="88" y="410" width="93" height="13"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="asp-eL-RRL"/>
+                                                        <constraint firstAttribute="height" constant="13" id="lOA-xP-zwz"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="44"/>
-                                                    <state key="normal" title="...">
-                                                        <color key="titleColor" red="0.25490197539999998" green="0.56078433989999998" blue="0.87843137979999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <state key="normal" title="***">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="buttonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kse-gB-VBM"/>
@@ -68,16 +68,16 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="0.40935359589041098" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="rnn-9Z-tP0" firstAttribute="top" secondItem="Vh7-H7-kPn" secondAttribute="bottom" constant="20" id="89n-b7-nNY"/>
+                                            <constraint firstItem="rnn-9Z-tP0" firstAttribute="leading" secondItem="WLs-AE-Gk0" secondAttribute="leadingMargin" constant="80" id="0y8-8I-MxI"/>
                                             <constraint firstItem="Vh7-H7-kPn" firstAttribute="leading" secondItem="WLs-AE-Gk0" secondAttribute="leadingMargin" id="A98-IG-rcS"/>
                                             <constraint firstItem="NOF-w3-mgm" firstAttribute="centerX" secondItem="WLs-AE-Gk0" secondAttribute="centerX" id="Dn4-Ub-LTo"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="rnn-9Z-tP0" secondAttribute="trailing" constant="89" id="GJU-gd-uue"/>
                                             <constraint firstItem="gpw-T3-8KY" firstAttribute="leading" secondItem="WLs-AE-Gk0" secondAttribute="leadingMargin" constant="-2" id="OFg-El-RF7"/>
                                             <constraint firstItem="Vh7-H7-kPn" firstAttribute="top" secondItem="gpw-T3-8KY" secondAttribute="bottom" constant="12" id="Vic-rT-8Us"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Vh7-H7-kPn" secondAttribute="trailing" constant="-7" id="bK9-iR-CDs"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="rnn-9Z-tP0" secondAttribute="bottom" constant="22" id="e5w-YP-N3j"/>
                                             <constraint firstItem="NOF-w3-mgm" firstAttribute="height" secondItem="WLs-AE-Gk0" secondAttribute="height" multiplier="0.7" constant="-28.599999999999966" id="hfY-l8-IJl"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="rnn-9Z-tP0" secondAttribute="trailing" constant="89" id="mks-OJ-TXG"/>
                                             <constraint firstItem="gpw-T3-8KY" firstAttribute="centerX" secondItem="NOF-w3-mgm" secondAttribute="centerX" constant="1" id="mtH-Aw-JyW"/>
-                                            <constraint firstItem="rnn-9Z-tP0" firstAttribute="leading" secondItem="WLs-AE-Gk0" secondAttribute="leadingMargin" constant="80" id="tYt-fK-coc"/>
                                             <constraint firstItem="gpw-T3-8KY" firstAttribute="top" secondItem="NOF-w3-mgm" secondAttribute="bottom" constant="17" id="uw5-di-r9f"/>
                                             <constraint firstItem="NOF-w3-mgm" firstAttribute="width" secondItem="WLs-AE-Gk0" secondAttribute="width" id="v2C-et-bkE"/>
                                             <constraint firstItem="NOF-w3-mgm" firstAttribute="centerY" secondItem="WLs-AE-Gk0" secondAttribute="centerY" constant="-70.5" id="xyX-3i-pMG"/>
@@ -217,6 +217,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="bFA-4V-whn" id="KmO-U5-Xh5"/>
                         <outlet property="imageViewToAdd" destination="2WH-pf-8zP" id="ZNz-8w-hYB"/>
+                        <outlet property="saveButton" destination="jTu-sT-Q6Q" id="Pli-BZ-uBb"/>
                         <outlet property="titleTextView" destination="rps-1f-HOD" id="e9d-fq-Udn"/>
                     </connections>
                 </viewController>
