@@ -13,23 +13,31 @@ class SecondPhotoJournalViewController: UIViewController {
     @IBOutlet weak var imageViewToAdd: UIImageView!
     @IBOutlet weak var cameraButton: UIToolbar!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
+
+
     private var titlePlaceHolder = "Title"
     private var imagePickerController: UIImagePickerController!
     var imageSelected: UIImage!
     var labelToSet = ""
     var index: Int!
-    
+    enum Function{
+        case edit
+        case save
+    }
+    var function: Function!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTitleText()
         setupImagePickerController()
         imageViewToAdd.contentMode = .scaleToFill
-        imageViewToAdd.image = imageSelected
         titleTextView.text = labelToSet
         titleTextView.textColor = .black
+        if function == .edit {
+            saveButton.isEnabled = true
+            imageViewToAdd.image = imageSelected
+        }
     }
-   
     private func setupTitleText() {
         titleTextView.delegate = self
         titleTextView.text = titlePlaceHolder
@@ -49,8 +57,8 @@ class SecondPhotoJournalViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     @IBAction func saveButton(_ sender: UIButton) {
-        if let hi = index {
-            PhotoJournalModel.deletPost(index: hi)
+        if let i = index {
+            PhotoJournalModel.deletPost(index: i)
         }
         guard let titleText = titleTextView.text else {
             fatalError("Title is nil")}

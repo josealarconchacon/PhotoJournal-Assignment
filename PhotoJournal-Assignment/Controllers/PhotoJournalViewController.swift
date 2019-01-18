@@ -54,6 +54,7 @@ class PhotoJournalViewController: UIViewController {
             vc.imageSelected = image
             vc.labelToSet = title
             vc.index = sender.tag
+            vc.function = .edit
             self.present(vc, animated: true, completion: nil)
             self.reload()
             self.delete()
@@ -99,6 +100,6 @@ extension PhotoJournalViewController: UICollectionViewDelegateFlowLayout, UIColl
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: 350, height: 350)
+        return CGSize.init(width: 390, height: 390)
     }
 }
